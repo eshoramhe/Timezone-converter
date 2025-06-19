@@ -17,7 +17,7 @@ col1, col2 = st.columns(2)
 with col1:
     date_input = st.date_input("Select a date", datetime.date.today())
 with col2:
-    time_input = st.time_input("Select a time", datetime.datetime.now().time())
+    time_input = st.time_input("Select a time (HH:MM)", value=None)
 
 # Combine date and time
 # It's good practice to ensure the user has actually selected something before proceeding,
