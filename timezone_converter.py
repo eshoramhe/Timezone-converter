@@ -15,15 +15,9 @@ st.write(
 st.header("1. Enter Date and Time")
 col1, col2 = st.columns(2)
 with col1:
-    # Set a default date, e.g., Jan 1st of the current year, or a fixed past date
-    # This avoids pre-filling with the current date, but still provides a starting point.
-    date_input = st.date_input("Select a date", value=datetime.date(2000, 1, 1)) # Example: Jan 1, 2000
-    # Alternatively, you could use:
-    # date_input = st.date_input("Select a date", value=datetime.date(datetime.date.today().year, 1, 1)) # Jan 1st of current year
+    date_input = st.date_input("Select a date", datetime.date.today())
 with col2:
-    # Set a default time, e.g., midnight (00:00:00)
-    # This avoids pre-filling with the current time, but still provides a starting point.
-    time_input = st.time_input("Select a time", value=datetime.time(0, 0, 0)) # Example: 00:00:00
+    time_input = st.time_input("Select a time", datetime.datetime.now().time())
 
 # Combine date and time
 # It's good practice to ensure the user has actually selected something before proceeding,
