@@ -15,11 +15,19 @@ st.write(
 st.header("1. Enter Date and Time")
 col1, col2 = st.columns(2)
 with col1:
-    date_input = st.date_input("Select a date", datetime.date.today())
+    # Set a default date, e.g., Jan 1st of the current year, or a fixed past date
+    # This avoids pre-filling with the current date, but still provides a starting point.
+    date_input = st.date_input("Select a date", value=datetime.date(2000, 1, 1)) # Example: Jan 1, 2000
+    # Alternatively, you could use:
+    # date_input = st.date_input("Select a date", value=datetime.date(datetime.date.today().year, 1, 1)) # Jan 1st of current year
 with col2:
-    time_input = st.time_input("Select a time", datetime.datetime.now().time())
+    # Set a default time, e.g., midnight (00:00:00)
+    # This avoids pre-filling with the current time, but still provides a starting point.
+    time_input = st.time_input("Select a time", value=datetime.time(0, 0, 0)) # Example: 00:00:00
 
 # Combine date and time
+# It's good practice to ensure the user has actually selected something before proceeding,
+# though the widgets always return a value.
 combined_datetime = datetime.datetime.combine(date_input, time_input)
 
 st.write(f"You selected: **{combined_datetime.strftime('%Y-%m-%d %H:%M:%S')}**")
@@ -58,5 +66,3 @@ st.success(
 
 st.write("---")
 st.info("Developed with ❤️ using Streamlit and pytz")
-
-
